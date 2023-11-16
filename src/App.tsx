@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 import { create } from "@regions-of-indonesia/client";
 import type { Region } from "@regions-of-indonesia/types";
 
+import Label from "./components/Label";
+import Select from "./components/Select";
+import RegionSelectOptions from "./components/RegionSelectOptions";
+
 const client = create();
 
 function App() {
@@ -73,84 +77,44 @@ function App() {
   return (
     <>
       <div className="container max-w-screen-lg mx-auto p-4 md:p-6 lg:p-8 xl:p-10">
-        <h1 className="mb-4 lg:mb-6 text-center text-lg lg:text-xl font-mono">Regions of Indonesia</h1>
+        <h1 className="mb-4 lg:mb-6 text-center text-lg md:text-xl 2xl:text-2xl font-mono font-bold">Regions of Indonesia</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
-          <div>
-            <select
-              className="select select-bordered select-xs w-full"
-              value={selectedProvinceCode}
-              onChange={(event) => {
-                setSelectedProvinceCode(event.currentTarget.value);
-              }}
-            >
+          <div className="flex flex-col gap-1">
+            <Label htmlFor="select-provinces">Provinces</Label>
+            <Select id="select-provinces" value={selectedProvinceCode} onChange={setSelectedProvinceCode}>
               <option value="" disabled>
                 Select...
               </option>
-
-              {provinces.map((region) => (
-                <option key={region.code} value={region.code}>
-                  {region.name}
-                </option>
-              ))}
-            </select>
+              <RegionSelectOptions regions={provinces} />
+            </Select>
           </div>
-          <div>
-            <select
-              className="select select-bordered select-xs w-full"
-              value={selectedDistrictCode}
-              onChange={(event) => {
-                setSelectedDistrictCode(event.currentTarget.value);
-              }}
-            >
+          <div className="flex flex-col gap-1">
+            <Label htmlFor="select-districts">Districts</Label>
+            <Select id="select-districts" value={selectedDistrictCode} onChange={setSelectedDistrictCode}>
               <option value="" disabled>
                 Select...
               </option>
-
-              {districts.map((region) => (
-                <option key={region.code} value={region.code}>
-                  {region.name}
-                </option>
-              ))}
-            </select>
+              <RegionSelectOptions regions={districts} />
+            </Select>
           </div>
-          <div>
-            <select
-              className="select select-bordered select-xs w-full"
-              value={selectedSubdistrictsCode}
-              onChange={(event) => {
-                setSelectedSubdistrictsCode(event.currentTarget.value);
-              }}
-            >
+          <div className="flex flex-col gap-1">
+            <Label htmlFor="select-subdistricts">Subdistricts</Label>
+            <Select id="select-subdistricts" value={selectedSubdistrictsCode} onChange={setSelectedSubdistrictsCode}>
               <option value="" disabled>
                 Select...
               </option>
-
-              {subdistricts.map((region) => (
-                <option key={region.code} value={region.code}>
-                  {region.name}
-                </option>
-              ))}
-            </select>
+              <RegionSelectOptions regions={subdistricts} />
+            </Select>
           </div>
-          <div>
-            <select
-              className="select select-bordered select-xs w-full"
-              value={selectedVillageCode}
-              onChange={(event) => {
-                setSelectedVillageCode(event.currentTarget.value);
-              }}
-            >
+          <div className="flex flex-col gap-1">
+            <Label htmlFor="select-villages">Villages</Label>
+            <Select id="select-villages" value={selectedVillageCode} onChange={setSelectedVillageCode}>
               <option value="" disabled>
                 Select...
               </option>
-
-              {villages.map((region) => (
-                <option key={region.code} value={region.code}>
-                  {region.name}
-                </option>
-              ))}
-            </select>
+              <RegionSelectOptions regions={villages} />
+            </Select>
           </div>
         </div>
       </div>

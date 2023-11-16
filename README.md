@@ -1,6 +1,6 @@
 # example-react
 
-Example React Tailwind Daisy UI
+Example React Tailwind
 
 <a title="github" href="https://github.com/regions-of-indonesia/example-react">
   <picture>
