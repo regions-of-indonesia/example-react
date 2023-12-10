@@ -1,3 +1,7 @@
+<p>
+  <img width="100%" src="https://hiiiits.deno.dev/hit/regions-of-indonesia/example-react" alt="hiiiits" title="hiiiits" />
+</p>
+
 # example-react
 
 Example React Tailwind
